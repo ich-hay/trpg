@@ -1,0 +1,15 @@
+version: '3'
+services:
+  myapp:
+    container_name: ${COMPOSE_PROJECT_NAME}
+    image: ${COMPOSE_PROJECT_NAME}-fastapi
+    build:
+      context: .
+      dockerfile: .containers/fastapi/Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
